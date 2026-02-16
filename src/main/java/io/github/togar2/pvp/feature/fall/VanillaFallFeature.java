@@ -74,7 +74,6 @@ public class VanillaFallFeature implements FallFeature, RegistrableFeature {
 		node.addListener(PlayerMoveEvent.class, event -> {
 			Player player = event.getPlayer();
 			if (playerStateFeature.isClimbing(player)) resetFallDistance(player);
-			//System.out.println(event.isOnGround());
 			handleFallDamage(
 					player, player.getPosition(),
 					event.getNewPosition(), event.isOnGround()
@@ -130,7 +129,6 @@ public class VanillaFallFeature implements FallFeature, RegistrableFeature {
 		}
 
 		double safeFallDistance = entity.getAttributeValue(Attribute.SAFE_FALL_DISTANCE);
-		System.out.println("fd: " + fallDistance + " | sfd: " + safeFallDistance);
 		if (fallDistance > safeFallDistance) {
 			if (!block.isAir()) {
 				double damageDistance = Math.ceil(fallDistance - safeFallDistance);
@@ -170,7 +168,7 @@ public class VanillaFallFeature implements FallFeature, RegistrableFeature {
 	@Override
 	public int getFallDamage(LivingEntity entity, double fallDistance) {
 		double safeFallDistance = entity.getAttributeValue(Attribute.SAFE_FALL_DISTANCE);
-		return (int) Math.max(0, Math.round((fallDistance - safeFallDistance) * entity.getAttributeValue(Attribute.FALL_DAMAGE_MULTIPLIER)));
+		return (int) Math.round((fallDistance - safeFallDistance) * entity.getAttributeValue(Attribute.FALL_DAMAGE_MULTIPLIER));
 	}
 
 	@Override
