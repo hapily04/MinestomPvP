@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository has been archived in favor of [another MinestomPvP fork](https://github.com/skript-minestom/pvp)
+
 # MinestomPvP
 
 [![license](https://img.shields.io/github/license/TogAr2/MinestomPvP.svg?style=for-the-badge)](../LICENSE)
